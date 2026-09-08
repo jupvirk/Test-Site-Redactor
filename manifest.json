@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "PromptGuard Redactor - Test Site",
+    "version": "1.0",
+    "description": "Intercepts prompts and redacts PII before sending to Simple AI Arena",
+    "host_permissions": [
+        "http://localhost:*/*",
+        "http://127.0.0.1:*/*"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://localhost:*/*",
+                "http://127.0.0.1:*/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle",
+            "all_frames": false
+        }
+    ]
+}
