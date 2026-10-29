@@ -1,11 +1,11 @@
-# 🧪 PromptGuard Redactor — Test Site Extension
+# PromptGuard Redactor — Test Site Extension
 
 > **Development & Testing Harness for Client-Side Prompt Redaction**  
 > Intercepts prompts, tokenizes sensitive PII, and validates client-side redaction against local AI arenas.
 
 ---
 
-## 📌 Overview
+## Overview
 
 **PromptGuard Redactor (Test Site)** is a Chromium extension (Manifest V3) specifically engineered for local development, testing, and security auditing. It operates in tandem with local sandboxes like [PromptGuard Test Site (Simple AI Arena)](../PromptGuard-Test-Site) on `localhost` and `127.0.0.1`.
 
@@ -37,15 +37,15 @@ This extension adapts the core prompt interception architecture from [GPT-Redact
 
 ---
 
-## ✨ Features
+## Features
 
-- **🏠 Localhost-Only Scope**  
+- **Localhost-Only Scope**  
   Restricted exclusively to `http://localhost:*/*` and `http://127.0.0.1:*/*` through Manifest V3 host permissions, ensuring zero interference with production browsing.
-- **⚛️ React 19 State Synchronizer**  
+- **React 19 State Synchronizer**  
   Targeted specifically at React 19 synthetic input tracking. Bypasses virtual DOM overrides by accessing native `HTMLInputElement` and `HTMLTextAreaElement` prototype property setters before dispatching bubbling `input` and `change` events.
-- **⏱️ 40ms Batching Buffer**  
+- **40ms Batching Buffer**  
   Accommodates modern React 19 concurrent and batched state updates before invoking `form.requestSubmit()`, preventing race conditions where unredacted text might otherwise submit.
-- **🗂️ Full PII Detection Suite**  
+- **Full PII Detection Suite**  
   - **Emails**: Identifies and tokenizes all standard email addresses (`{{EMAIL_n}}`).
   - **Phone Numbers**: Matches US/International telephone numbers (`{{PHONE_n}}`).
   - **Social Security Numbers (SSN)**: Complies with 3-2-4 hyphenated/spaced formats (`{{SSN_n}}`).
@@ -53,7 +53,7 @@ This extension adapts the core prompt interception architecture from [GPT-Redact
   - **Instructors & Titles**: Dr., Professor, Mr., Mrs., Ms. (`{{TEACHER_n}}`).
   - **Identity Phrases**: *"I'm [Name]"* and *"My name is [Name]"* contextual recognition (`{{INTRO_n}}`).
   - **Standalone Names**: Capitalized multi-word proper nouns (`{{NAME_n}}`).
-- **🔄 Dual-Trigger UI Restorer**  
+- **Dual-Trigger UI Restorer**  
   Watches both `childList` (new chat message bubbles added to DOM) and `characterData` (live text streaming mutations) to seamlessly decode tokens without ever altering form input fields.
 
 ---
@@ -69,7 +69,7 @@ Test-Site-Redactor/
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -106,7 +106,7 @@ npm run dev
 
 ---
 
-## 🔬 Technical Implementation Details
+## Technical Implementation Details
 
 ### React 19 State Synchronization
 
@@ -141,7 +141,7 @@ if (node.closest("form") || node.tagName === "INPUT" || node.tagName === "TEXTAR
 
 ---
 
-## 🔒 Security Guarantee
+## Security Guarantee
 
 - Operates strictly on local hostnames (`localhost`, `127.0.0.1`).
 - Contains no external network dependencies or remote scripts.
